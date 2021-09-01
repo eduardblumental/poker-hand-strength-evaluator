@@ -23,8 +23,8 @@ def main_hand_evaluator(hand):
     combo_dict = create_combo_dict(hand)
 
     if is_quads(combo_dict):
-        quads_rank, rank = find_quads_ranks(hand)
-        hand_strength = combo_strength_dict['quads'] + calculate_rank_score(quads_rank * 4) + calculate_rank_score(rank)
+        quads_rank, rank = find_quads_ranks(combo_dict)
+        hand_strength = combo_strength_dict['quads'] + quads_rank * 4 + rank
     else:
         hand_strength = combo_strength_dict['high_card'] + calculate_rank_score(hand)
 
@@ -32,4 +32,4 @@ def main_hand_evaluator(hand):
 
 
 if __name__ == "__main__":
-    print(main_hand_evaluator(['Ah', '2c', 'Js', 'Qd', '5s']))
+    print(main_hand_evaluator(['Ah', 'Ac', 'As', 'Ad', '5s']))

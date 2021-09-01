@@ -34,8 +34,28 @@ def is_flush(hand):
 
 
 def is_straight(combo_dict):
+    if combo_dict['13'] == 1:
+        combo_dict['00'] == 1
+
+    straight_start = False
+    consecutive_cards = 0
+
     for rank in combo_dict:
-        pass
+        if combo_dict[rank] == 1:
+            straight_start == True
+            consecutive_cards += 1
+        elif straight_start:
+            if consecutive_cards == 5:
+                return True
+
+    return False
+
+
+def is_baby_ace(combo_dict):
+    if combo_dict['00'] == combo_dict['01'] == 1:
+        return True
+    else:
+        return False
 
 
 def is_set(combo_dict):

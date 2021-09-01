@@ -33,12 +33,13 @@ def map_card_to_rank(card):
     return card_dict[card[0]]
 
 
-def string_hand_to_list(hand):
-    return wrap(hand, 2)
+def string_hand_to_list_hand(string_hand):
+    return wrap(string_hand, 2)
 
 
 def create_combo_dict(hand):
     combo_dict = {
+        '00': 0,
         '01': 0,
         '02': 0,
         '03': 0,
