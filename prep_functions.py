@@ -15,19 +15,19 @@ combo_strength_dict = {'straight_flush': '9',
 
 def map_card_to_rank(card):
     card_dict = {
-        '2': '01',
-        '3': '02',
-        '4': '03',
-        '5': '04',
-        '6': '05',
-        '7': '06',
-        '8': '07',
-        '9': '08',
-        'T': '09',
-        'J': '10',
-        'Q': '11',
-        'K': '12',
-        'A': '13'
+        '2': '02',
+        '3': '03',
+        '4': '04',
+        '5': '05',
+        '6': '06',
+        '7': '07',
+        '8': '08',
+        '9': '09',
+        'T': '10',
+        'J': '11',
+        'Q': '12',
+        'K': '13',
+        'A': '14'
     }
 
     return card_dict[card[0]]
@@ -39,7 +39,6 @@ def string_hand_to_list_hand(string_hand):
 
 def create_combo_dict(hand):
     combo_dict = {
-        '00': 0,
         '01': 0,
         '02': 0,
         '03': 0,
@@ -52,7 +51,8 @@ def create_combo_dict(hand):
         '10': 0,
         '11': 0,
         '12': 0,
-        '13': 0
+        '13': 0,
+        '14': 0
     }
 
     for card in hand:
