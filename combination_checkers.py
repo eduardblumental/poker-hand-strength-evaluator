@@ -1,6 +1,8 @@
 def is_straight_flush(hand, combo_dict):
     if is_straight(combo_dict) and is_flush(hand):
         return True
+    
+    return False
 
 
 def is_quads(combo_dict):
