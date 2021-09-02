@@ -41,16 +41,20 @@ def main_hand_evaluator(hand):
 
 
 def return_all_possible_combinations(game_type, table, hand):
+    hand_list = []
+    list_hand = string_hand_to_list_hand(hand)
+    list_table = string_hand_to_list_hand(table)
+
     if game_type == 'texas-holdem':
-        for combo in combinations(table + hand, 5):
-            yield combo
+        for combo in combinations(list_table + list_hand, 5):
+            hand_list.append(''.join(combo))
     elif game_type == 'omaha-holdem':
-        for table_combo in combinations(table, 3):
-            for hand_combo in combinations(hand, 2):
+        for table_combo in combinations(list_table, 3):
+            for hand_combo in combinations(list_hand, 2):
                 combo = table_combo + hand_combo
-                yield combo
-    elif game_type == 'five-card-draw':
-        yield hand
+                hand_list.append(''.join(combo))
+
+    return hand_list
 
 
 def sort_hands_by_strength(list_hands):
@@ -61,3 +65,8 @@ def sort_hands_by_strength(list_hands):
 
     return dict(sorted(hand_strength_dict.items(), key=lambda item: item[1]))
 
+
+def evaluate_holdem_hand(game_type, table, hand):
+    possible_hands = return_all_possible_combinations(game_type, table, hand)
+    hands_dict = sort_hands_by_strength(possible_hands)
+    return max(list(hands_dict.values()))

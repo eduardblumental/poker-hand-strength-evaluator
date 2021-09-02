@@ -15,12 +15,12 @@ def create_card_list():
 
 
 def draw_cards(card_list, number_of_cards):
-    new_card_list = create_card_list()
+    new_card_list = card_list
     draw = ''
 
     for _ in range(number_of_cards):
-        card = random.choice(card_list)
-        card_list.remove(card)
+        card = random.choice(new_card_list)
+        new_card_list.remove(card)
         draw += card
 
     return new_card_list, draw
@@ -38,7 +38,6 @@ def example_generator(game_type):
         hands_card_count = 5
 
     card_list = create_card_list()
-
     new_card_list, table = draw_cards(card_list, table_card_count)
 
     hands = []

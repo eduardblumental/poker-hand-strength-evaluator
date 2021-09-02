@@ -15,15 +15,20 @@ def main():
             game_type = line_list[0]
 
             if game_type == 'five-card-draw':
+                table = ''
                 hands = line_list[1:]
-
                 sorted_hands = sort_hands_by_strength(hands)
-
-                for key in sorted_hands:
-                    print(key, sorted_hands[key])
             else:
                 table = line_list[1]
                 hands = line_list[2:]
+                evaluated_hands = {}
+
+                for hand in hands:
+                    evaluated_hands[hand] = evaluate_holdem_hand(game_type, table, hand)
+
+                sorted_hands = dict(sorted(evaluated_hands.items(), key=lambda item: item[1]))
+
+            print(f'{" ".join(sorted_hands.keys())}')
 
 
 if __name__ == "__main__":
