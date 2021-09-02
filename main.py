@@ -29,19 +29,22 @@ def main():
     lines = sys.stdin
 
     for line in lines:
-        sorted_hands = line_to_sorted_hands(line)
-        output_line = ''
+        try:
+            sorted_hands = line_to_sorted_hands(line)
+            output_line = ''
 
-        previous_strength = 0
-        for key in sorted_hands:
-            if sorted_hands[key] == previous_strength:
-                output_line += '=' + key
-            else:
-                output_line += ' ' + key
-            previous_strength = sorted_hands[key]
+            previous_strength = 0
+            for key in sorted_hands:
+                if sorted_hands[key] == previous_strength:
+                    output_line += '=' + key
+                else:
+                    output_line += ' ' + key
+                previous_strength = sorted_hands[key]
 
-        output_line = output_line.strip()
-        print(output_line)
+            output_line = output_line.strip()
+            print(output_line)
+        except:
+            print('Error')
 
 
 if __name__ == "__main__":
