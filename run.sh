@@ -1,2 +1,2 @@
 #!/bin/sh
-#TODO python script
+python main.py < "$1"

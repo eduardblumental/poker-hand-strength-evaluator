@@ -1,4 +1,3 @@
-from itertools import combinations
 from textwrap import wrap
 
 
@@ -62,14 +61,14 @@ def create_combo_dict(hand):
     return combo_dict
 
 
-def return_all_possible_combinations(game_type, table, hand):
-    if game_type == 'texas-holdem':
-        for combo in combinations(table + hand, 5):
-            yield combo
-    elif game_type == 'omaha-holdem':
-        for table_combo in combinations(table, 3):
-            for hand_combo in combinations(hand, 2):
-                combo = table_combo + hand_combo
-                yield combo
-    elif game_type == 'five-card-draw':
-        yield hand
+def calculate_rank_score(hand):
+    ranks = []
+
+    for card in hand:
+        if card.isnumeric():
+            ranks.append(card)
+        else:
+            ranks.append(map_card_to_rank(card))
+
+    score = ''.join(sorted(ranks, reverse=True))
+    return score

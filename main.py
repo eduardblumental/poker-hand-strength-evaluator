@@ -1,25 +1,10 @@
 import sys
-from itertools import combinations
-from textwrap import wrap
 from prep_functions import *
 from combination_checkers import *
 from rank_returners import *
 
 # Each hand is converted into an 11-digit integer where the first digit represents the
 # combination strength and 10 others represent its rank.
-
-
-def calculate_rank_score(hand):
-    ranks = []
-
-    for card in hand:
-        if card.isnumeric():
-            ranks.append(card)
-        else:
-            ranks.append(map_card_to_rank(card))
-
-    score = ''.join(sorted(ranks, reverse=True))
-    return score
 
 
 def main_hand_evaluator(hand):
@@ -59,4 +44,7 @@ def main_hand_evaluator(hand):
 
 
 if __name__ == "__main__":
+    file = sys.stdin
+    for line in file:
+        print(line)
     print(main_hand_evaluator(['4c', '5c', '2c', '3c', 'Ac']))
