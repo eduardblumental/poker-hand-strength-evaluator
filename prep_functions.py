@@ -72,3 +72,7 @@ def calculate_rank_score(hand):
 
     score = ''.join(sorted(ranks, reverse=True))
     return score
+
+
+def sort_dict_by_value(dictionary):
+    return dict(sorted(dictionary.items(), key=lambda item: (item[1], item[0])))

@@ -63,7 +63,7 @@ def sort_hands_by_strength(list_hands):
     for hand in list_hands:
         hand_strength_dict[hand] = main_hand_evaluator(string_hand_to_list_hand(hand))
 
-    return dict(sorted(hand_strength_dict.items(), key=lambda item: item[1]))
+    return sort_dict_by_value(hand_strength_dict)
 
 
 def evaluate_holdem_hand(game_type, table, hand):

@@ -58,7 +58,7 @@ def main():
 
     with open('test-cases.txt', 'w') as f:
         for game_type in game_type_list:
-            for _ in range(20):
+            for _ in range(1000):
                 example = example_generator(game_type)
                 f.write(example + '\n')
 
