@@ -47,7 +47,11 @@ def is_straight(combo_dict):
         elif straight_start:
             if consecutive_cards == 5:
                 return True
+            else:
+                combo_dict['01'] = 0
+                return False
 
+    combo_dict['01'] = 0
     return False
 
 
